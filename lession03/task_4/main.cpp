@@ -1,6 +1,7 @@
 #include <iostream>
 
 using namespace std;
+
 class Card{
 	enum eSuit{
 		clubs,
@@ -24,6 +25,7 @@ class Card{
 		ace = 1
 	}Number;
 	bool status=false;
+
 public:
 	Card(int eS,int eN,bool s) : Suit(static_cast<eSuit>(eS)), Number(static_cast<eNumber>(eN)), status(s){}
 	Card(eSuit eS,eNumber eN,bool s) : Suit(eS), Number(eN), status(s){}
@@ -40,7 +42,8 @@ public:
 
 int main()
 	{
-		Card test(2,10,false);
+		//Card test2(Card::clubs,Card::seven,false);	// работает только если объявлять поля в области public
+		Card test(2,10,false);							// Иначе приходится делать через static_cast
 		cout<<test.GetValue()<<endl;
 		cout<<test.GetStatus()<<endl;
 		test.Flip();
