@@ -14,7 +14,7 @@ public:
 	virtual ~Figure(){count--;};
 };
 
-class Circle : virtual public Figure{
+class Circle : public Figure{
 protected:
 	double radius;
 public:

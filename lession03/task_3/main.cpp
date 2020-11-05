@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-int GCD (int, int);
 
 class Fraction{
 	int Numerator;
@@ -17,6 +16,10 @@ public:
 					Denominator=b;
 				}
 		};
+	//greatest common divisor
+	int GCD (int a, int b) const {
+		return (b == 0) ? a : GCD (b, a % b);
+	}
 	void Print() const{
 			cout<<Numerator<<"/"<<Denominator;
 		}
@@ -55,30 +58,27 @@ public:
 	friend Fraction operator/ (Fraction value1,Fraction value2);
 	// == !=
 	bool operator== (Fraction &value) const{
-			return (this->Numerator * value.Denominator) == (value.Numerator * this->Denominator) ? true : false;
+			return (this->Numerator * value.Denominator) == (value.Numerator * this->Denominator);
 		}
 	bool operator!= (Fraction &value) const{
 			return !(*this==value);
 		}
 	// > <=
 	bool operator> (Fraction &value) const{
-			return (this->Numerator * value.Denominator) > (value.Numerator * this->Denominator) ? true : false;
+			return (this->Numerator * value.Denominator) > (value.Numerator * this->Denominator);
 		}
 	bool operator<= (Fraction &value) const{
 			return !(*this>value);
 		}
 	// < >=
 	bool operator< (Fraction &value) const{
-			return (this->Numerator * value.Denominator) < (value.Numerator * this->Denominator) ? true : false;
+			return (this->Numerator * value.Denominator) < (value.Numerator * this->Denominator);
 		}
 	bool operator>= (Fraction &value) const{
 			return !(*this<value);
 		}
 };
-//greatest common divisor
-int GCD (int a, int b) {
-	return (b == 0) ? a : GCD (b, a % b);
-}
+
 
 void toLCD(Fraction &a, Fraction &b){
 
