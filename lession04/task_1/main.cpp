@@ -8,7 +8,15 @@ class ArrayInt
 private:
 	int m_length;
 	int *m_data;
-
+	
+	void zeroing(int start, int end){
+			for(int i=start; i<end;i++){
+				m_data[i]=0;
+			}
+		}
+	void zeroing(){
+			zeroing(0,m_length);
+		}
 public:
 	ArrayInt(): m_length(0), m_data(nullptr)
 	{ }
@@ -24,14 +32,7 @@ public:
 			else
 				m_data = nullptr;
 		}
-	void zeroing(int start, int end){
-			for(int i=start; i<end;i++){
-				m_data[i]=0;
-			}
-		}
-	void zeroing(){
-			zeroing(0,m_length);
-		}
+
 	void erase()
 		{
 			delete[] m_data;

@@ -47,7 +47,7 @@ public:
 			m_Cards.push_back(pCard);
 		}
 	void Clear(){
-			for (int i=0; i<static_cast<int>(m_Cards.size());i++) delete [] m_Cards[i];
+			for (int i=0; i<static_cast<int>(m_Cards.size());i++) delete m_Cards[i];
 			m_Cards.clear();
 		}
 	int GetTotal(){
