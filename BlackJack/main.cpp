@@ -98,8 +98,7 @@ public:
 			return this->GetTotal()>21;
 		}
 	void Bust() const{
-		cout<<name;
-		IsBoosted() ? cout<<" is busted"<<endl : cout<<endl;
+                cout<<name<<" is busted."<<endl;
 	}
 	};
 
