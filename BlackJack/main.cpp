@@ -40,6 +40,7 @@ public:
 };
 
 class Hand{
+protected:
 	vector<Card*> m_Cards;
 public:
 	Hand(){}
@@ -50,7 +51,7 @@ public:
 			for (int i=0; i<static_cast<int>(m_Cards.size());i++) delete m_Cards[i];
 			m_Cards.clear();
 		}
-	int GetTotal(){
+	int GetTotal() const{
 			int total=0;
 			int aces=0;
 			for (int i=0; i<static_cast<int>(m_Cards.size());i++){
@@ -88,6 +89,18 @@ public:
 
 };
 
+class GenericPlayer : public Hand{
+protected:
+	string name;
+public:
+	virtual bool IsHitting()=0;
+	bool IsBoosted() const{
+			return this->GetTotal()>21;
+		}
+	void Bust() const{
+                cout<<name<<" is busted."<<endl;
+	}
+	};
 
 int main()
 {
@@ -119,9 +132,5 @@ int main()
 //        cout << "\nDo you want to play again? (Y/N): ";
 //        cin >> again;
 //    }
-		Hand h;
-		h.Add(new Card(10,1,1));
-		h.Add(new Card(5,1,1));
-		cout<<h.GetTotal()<<endl;
 	return 0;
 }
